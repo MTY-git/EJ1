@@ -26,9 +26,8 @@ class DetailActivity : AppCompatActivity() {
                 detailName.text=persona.name
                 detailImagen.setImageResource(persona.pic)
                 llamar.setOnClickListener{
-                    val intent = Intent(Intent.ACTION_DIAL).apply {
-                        data = Uri.parse("tel:${persona.tel}")
-                    }
+                    val intent = Intent(Intent.ACTION_DIAL)
+                        intent.data = Uri.parse("tel:${persona.tel}")
                     if (intent.resolveActivity(packageManager) != null) {
                         startActivity(intent)
                     }
