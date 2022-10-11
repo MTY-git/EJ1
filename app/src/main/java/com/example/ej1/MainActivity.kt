@@ -15,12 +15,13 @@ class MainActivity : AppCompatActivity() {
 
         binding = inflate(layoutInflater).apply {
             setContentView(root)
-            recycler.adapter=Adapter(personas){
-                    persona->
+
+            recycler.adapter=Adapter(personas) { persona ->
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra(DetailActivity.EXTRA_PERSONA,persona)
+                intent.putExtra(DetailActivity.EXTRA_PERSONA, persona)
                 startActivity(intent)
             }
+
         }
     }
 
