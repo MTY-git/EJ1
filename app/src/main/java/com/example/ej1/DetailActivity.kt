@@ -25,18 +25,14 @@ class DetailActivity : AppCompatActivity() {
             if(persona!=null){
                 detailName.text=persona.name
                 detailImagen.setImageResource(persona.pic)
-                llamar.setOnClickListener{
-                    val intent = Intent(Intent.ACTION_DIAL)
-                        intent.data = Uri.parse("tel:${persona.tel}")
-                    if (intent.resolveActivity(packageManager) != null) {
-                        startActivity(intent)
-                    }
+                llamar.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+persona.tel))
+                    startActivity(intent)
                 }
+
                 enviarEmail.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:${persona.email}"))
-                    if (intent.resolveActivity(packageManager) != null) {
-                        startActivity(intent)
-                    }
+                    val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"+persona.email))
+                    startActivity(intent)
                 }
             }
         }
